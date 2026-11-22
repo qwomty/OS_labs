@@ -60,7 +60,7 @@ SRC_NAME=$(basename -- "$SRC")
 SRC_ABS=$SRC_DIR/$SRC_NAME
 
 OUT_NAME=$(sed -n 's|^[[:space:]]*[/%*][/%*]*[[:space:]]*Output:[[:space:]]*||p' "$SRC_ABS" \
-           | sed -n '1s/[[:space:]*].*//p')
+           | sed -n '1s/[[:space:]*].*//;1p')
 
 if [ -z "$OUT_NAME" ]; then
     die "$EX_NOOUT" "в '$SRC' не найден комментарий вида 'Output: имя_файла'"
